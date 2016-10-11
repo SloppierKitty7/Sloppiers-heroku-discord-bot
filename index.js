@@ -6,22 +6,27 @@ var bot = new Discord.Client();
 var getJSON = require('get-JSON');
 var colorrole;
 
-bot.on("message", function(message)) {
-	if(message.content == "!color") {
+var colorrole;
+var clr;
+
+bot.on("message", function(message) {
+	if(message.content == "/color") {
 		colorrole = message.member.roles.find("name", message.author.id);
 		if(colorrole == null) {
-			if(message.member.guild.roles.find("name", message.author.id) == null) {
-				message.member.guild.createGuild({name: message.author.id});
-			}
-			message.member.addRole(message.member.guild.roles.find("name", message.author.id));
+			message.guild.members.forEach((m) => {
+				message.guild.createRole({name: m.id}).then(role => {
+					m.addRole(role);
+				});
+			});
 			colorrole = message.member.roles.find("name", message.author.id);
 		}
-		colorrole.setColor(Math.random()*16777216);
+		colorrole.setColor(clr);
+		message.delete();
 	}
 });
 
 setInterval(function() {
-	
+	clr = Math.random()*16777216;
 }, [1]);
 
 bot.login("MjI3MjA0NzIwNjUyMDU4NjM0.CsCwaQ.DOkzw6x3oLZ6hXbifGX5tGdmhf4");
