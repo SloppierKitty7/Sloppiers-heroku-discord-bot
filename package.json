@@ -7,7 +7,7 @@
   },
   "dependencies": {
     "ajax-request": "^1.2.1",
-    "discord.js": "^7.0.1",
+    "discord.js": "hydrabolt/discord.js/",
     "express": "^4.13.3",
     "get-json": "0.0.3",
     "jquery": "^2.2.4"
