@@ -5,8 +5,6 @@ var ver ="0.86";
 var bot = new Discord.Client();
 var getJSON = require('get-JSON');
 var colorrole;
-
-var colorrole;
 var clr;
 
 bot.on("message", function(message) {
