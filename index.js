@@ -9,14 +9,14 @@ var clr;
 
 bot.on("message", function(message) {
 	if(message.content == "/color") {
-		colorrole = message.member.roles.find("name", message.author.id);
+		colorrole = message.member.roles.find("name", message.author.id + ": Color");
 		if(colorrole == null) {
 			message.guild.members.forEach((m) => {
-				message.guild.createRole({name: m.id}).then(role => {
+				message.guild.createRole({name: m.id + ": Color"}).then(role => {
 					m.addRole(role);
 				});
 			});
-			colorrole = message.member.roles.find("name", message.author.id);
+			colorrole = message.member.roles.find("name", message.author.id + ": Color");
 		}
 		colorrole.setColor(clr);
 		message.delete();
